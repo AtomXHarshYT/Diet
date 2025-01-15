@@ -1,0 +1,21 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+
+# Django specific
+*.log
+db.sqlite3
+staticfiles/
+media/
+
+# Environment variables
+.env
+
+# MongoDB
+*.lock
+*.pid

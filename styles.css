@@ -1,0 +1,579 @@
+/* General Styling */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+  /* Prevent horizontal scrolling */
+}
+
+
+body {
+  font-family: 'Poppins', sans-serif;
+  /* Changed font family */
+  background: linear-gradient(135deg, #FFFFFF, #F0F0F0);
+  background-repeat: no-repeat;
+  /* Prevents background from repeating */
+  color: #333;
+  position: relative;
+  /* Position relative to allow absolute positioning of the pseudo-element */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* Ensures body covers the full viewport height */
+}
+
+/* Header Styling */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  /* Reduced padding */
+  background: #282A36;
+  color: #FFFFFF;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 40px;
+  /* Increased height of header */
+}
+
+/* Left Content */
+.left-content h1 {
+  font-size: 22px;
+  /* Decreased font size */
+  font-weight: bold;
+  color: #FF6F61;
+  /* Highlighted word color */
+  margin: 0;
+  font-family: 'Oswald', sans-serif;
+  /* Changed font family */
+}
+
+/* Right Content - Button */
+.contact-button {
+  background-color: #FF6F61;
+  /* Vibrant button color */
+  color: #FFFFFF;
+  border: none;
+  padding: 10px 18px;
+  font-size: 14px;
+  /* Decreased font size */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  /* Enhanced transition */
+}
+
+.contact-button:hover {
+  background-color: #E05A50;
+  /* Slightly darker color on hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  /* Shadow effect on hover */
+}
+
+.contact-button:active {
+  background-color: #D04A40;
+  /* Darker color when pressed */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  /* Reduced shadow when pressed */
+}
+
+.contact-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  text-align: center;
+  width: 90%;
+  max-width: 300px;
+}
+
+.contact-popup.show-popup {
+  opacity: 0.9;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.contact-popup-content {
+  position: relative;
+  width: 100%;
+}
+
+.close-popup {
+  position: absolute;
+  top: -30px;
+  right: -15px;
+  font-size: 24px;
+  background: #FF6F61;
+  border: none;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.close-popup:hover {
+  background-color: #E05A50;
+}
+
+.contact-popup h2 {
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 1.5em;
+}
+
+.contact-popup p {
+  margin-bottom: 10px;
+  color: #666;
+  font-size: 1em;
+}
+
+.phone-number {
+  display: inline-block;
+  font-size: 1.2em;
+  color: #FF6F61;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  word-break: break-all;
+}
+
+.phone-number:hover {
+  color: #E05A50;
+}
+
+.logo-container {
+  background-image: url(./imgs/mainpage_bg50.jpg);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 70px;
+  padding: 25px;
+}
+
+.logo {
+  max-width: 250px;
+  height: auto;
+}
+
+.logo-2 {
+  max-width: 250px;
+  height: auto;
+}
+
+.box-content {
+  display: none;
+  /* Hide box-content by default */
+}
+
+.boxes-container {
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  padding: 20px;
+  gap: 20px;
+  /* Space between boxes */
+  background-color: rgba(240, 240, 240, 0.9);
+  /* Light gray background with slight opacity */
+  border-radius: 10px;
+  /* Rounded corners for the container */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Shadow effect for the container */
+}
+
+.journey-button {
+  background-color: #FF6F61;
+  /* Green */
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.journey-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease;
+  z-index: 0;
+}
+
+.journey-button:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.journey-button:hover {
+  color: #4CAF50;
+  /* Change text color on hover */
+  background-color: white;
+  /* Change background color on hover */
+  transform: scale(1.05);
+  /* Slightly enlarge the button */
+}
+
+.journey-button:focus {
+  outline: none;
+  /* Remove outline on focus */
+}
+
+.box {
+  position: relative;
+  /* Position relative to allow absolute positioning of the pseudo-element */
+  border-radius: 10px;
+  /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Shadow effect */
+  padding: 20px;
+  flex: 1;
+  /* Allow boxes to grow equally */
+  overflow: hidden;
+  /* Ensure the pseudo-element doesn't overflow the box */
+  transition: transform 0.3s ease;
+  box-shadow: 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.8);
+  /* White background with slight opacity */
+  display: flex;
+  /* Use Flexbox for centering */
+  flex-direction: column;
+  /* Stack children vertically */
+  justify-content: center;
+  /* Center content vertically */
+  align-items: center;
+  /* Center content horizontally */
+  text-align: center;
+  /* Center text */
+  overflow: hidden;
+  /* Ensure contents stay inside */
+}
+
+/* Pseudo-element for background image */
+.box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('./imgs/gym_workout1.jpg');
+  /* Default image for Box 1 */
+  background-size: cover;
+  /* Ensure the background image covers the box */
+  background-position: center;
+  /* Center the background image */
+  opacity: 0.6;
+  /* Set the desired opacity for the background image */
+  z-index: 1;
+  /* Place it behind the content */
+}
+
+.box:nth-child(1)::before {
+  background-image: url('./imgs/gym_workout2.jpg');
+  /* Image for Box 1 */
+}
+
+.box:nth-child(2)::before css {
+  background-image: url('./imgs/gym_workout2.jpg');
+  /* Image for Box 2 */
+}
+
+.box:nth-child(3)::before {
+  background-image: url('./imgs/diet_plan1.jpg');
+  /* Image for Box 3 */
+}
+
+.box:nth-child(4)::before {
+  background-image: url('./imgs/diet_plan2.jpg');
+  /* Image for Box 4 */
+}
+
+.box h2 {
+  font-size: 18px;
+  /* Title font size */
+  color: #ffffff;
+  /* Use a vibrant color for contrast */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  /* Subtle shadow for better visibility */
+  position: relative;
+  /* Ensure it is above the background */
+  z-index: 2;
+  /* Ensure text is above the pseudo-element */
+  padding: 5px;
+  /* Optional: add some padding for better readability */
+  margin: 0;
+  /* Remove default margin */
+}
+
+.box p {
+  font-size: 16px;
+  /* Standard font size for readability */
+  color: #2C3E50;
+  /* Dark blue-gray color for a professional look */
+  line-height: 1.5;
+  /* Comfortable line height for reading */
+  margin: 10px 0;
+  /* Space above and below the paragraph */
+  text-align: left;
+  /* Align text to the left for a classic look */
+  font-weight: 500;
+  /* Medium font weight for emphasis */
+  font-family: 'Georgia', serif;
+  /* Use a serif font for elegance */
+  border-left: 4px solid #FF6F61;
+  /* Left border for a stylish accent */
+  padding-left: 10px;
+  /* Padding to separate text from the border */
+  background-color: rgba(255, 255, 255, 0.9);
+  /* Light background for contrast */
+  border-radius: 4px;
+  /* Slightly rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow for depth */
+  z-index: 2;
+}
+
+.box-button {
+  position: relative;
+  /* Position relative for pseudo-element */
+  background-color: rgb(201, 140, 10);
+  /* Dark blue-gray color for a professional look */
+  color: #FFFFFF;
+  /* White text color for contrast */
+  border: none;
+  /* No border */
+  padding: 12px 24px;
+  /* Increased padding for a larger button */
+  font-size: 16px;
+  /* Font size for readability */
+  font-family: 'Roboto', sans-serif;
+  /* Modern sans-serif font */
+  border-radius: 5px;
+  /* Slightly rounded corners */
+  cursor: pointer;
+  /* Pointer cursor on hover */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  /* Smooth transition effects */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  /* Subtle shadow for depth */
+  z-index: 2;
+}
+
+.box-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: rgba(255, 255, 255, 0.2);
+  /* Light overlay for effect */
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  /* Start scaled down */
+  transition: transform 0.5s ease;
+  /* Smooth transition for the effect */
+}
+
+.box-button:hover {
+  background-color: #2980b9;
+  /* Darker blue on hover */
+  transform: translateY(-2px);
+  /* Lift effect on hover */
+}
+
+.box-button:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+  /* Expand the overlay on hover */
+}
+
+.box-button span {
+  position: relative;
+  z-index: 1;
+  /* Ensure text is above the pseudo-element */
+}
+
+.box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.box:hover::before {
+  opacity: 0.8;
+  /* This will make the background image slightly more visible on hover */
+}
+
+.box-button:hover {
+  background-color: #34495E;
+  /* Slightly lighter shade on hover */
+  transform: translateY(-3px);
+  /* Lift effect on hover */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+  /* Enhanced shadow on hover */
+}
+
+.box-button:active {
+  background-color: #1A242F;
+  /* Darker shade when pressed */
+  transform: translateY(0);
+  /* Reset lift effect */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  /* Reduced shadow when pressed */
+}
+
+footer {
+  background-color: #282A36;
+  /* Dark background for the footer */
+  color: #FFFFFF;
+  /* White text color */
+  text-align: center;
+  /* Center align the text */
+  padding: 15px 0;
+  /* Padding for spacing */
+  width: 100%;
+  /* Full width */
+  margin-top: auto;
+  /* Push footer to the bottom */
+}
+
+.footer-content p {
+  margin: 0;
+  /* Remove default margin */
+  font-family: 'Roboto', sans-serif;
+  /* Consistent font family */
+  font-size: 14px;
+  /* Font size for readability */
+}
+
+@media (max-width: 768px) {
+  @media (max-width: 768px) {
+
+    .contact-popup {
+      padding: 15px;
+    }
+
+    .contact-popup h2 {
+      font-size: 1.3em;
+    }
+
+    .contact-popup p {
+      font-size: 0.9em;
+    }
+
+    .phone-number {
+      font-size: 1.1em;
+    }
+
+    .close-popup {
+      top: -20px;
+      right: -10px;
+      width: 25px;
+      height: 25px;
+      font-size: 20px;
+    }
+
+    .logo-container {
+      gap: 2px;
+      padding: 5px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo {
+      max-width: 220px;
+      height: auto;
+    }
+
+    .logo-2 {
+      max-width: 200px;
+      height: auto;
+    }
+
+    .box-content {
+      display: block;
+      /* Show box-content on mobile devices */
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .boxes-container {
+      display: none;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .boxes-container.show-boxes-mobile {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      background-color: rgba(255, 255, 255, 0.95);
+      z-index: 1000;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      opacity: 1;
+    }
+
+    .boxes-container.show-boxes-mobile .box {
+      margin-bottom: 15px;
+    }
+
+    /* Add an overlay when boxes are shown */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    body.show-overlay::after {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
