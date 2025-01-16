@@ -2,6 +2,11 @@ document.addEventListener('DOMContentLoaded', function () {
   const journeyButton = document.querySelector('.journey-button');
   const boxesContainer = document.querySelector('.boxes-container');
   const boxContent = document.querySelector('.box-content');
+  const begin_Gym = document.querySelector('#begin-button');
+
+  begin_Gym.addEventListener('click', function () {
+    window.location.href = 'begin_Gym.html';
+  });
 
   journeyButton.addEventListener('click', function () {
     if (window.innerWidth <= 768) {
