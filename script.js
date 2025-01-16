@@ -3,9 +3,13 @@ document.addEventListener('DOMContentLoaded', function () {
   const boxesContainer = document.querySelector('.boxes-container');
   const boxContent = document.querySelector('.box-content');
   const begin_Gym = document.querySelector('#begin-button');
+  const inter_Gym = document.querySelector('#inter-button');
 
   begin_Gym.addEventListener('click', function () {
     window.location.href = 'begin_Gym.html';
+  });
+  inter_Gym.addEventListener('click', function () {
+    window.location.href = 'inter_Gym.html';
   });
 
   journeyButton.addEventListener('click', function () {
