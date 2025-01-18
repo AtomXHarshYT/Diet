@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const boxContent = document.querySelector('.box-content');
   const begin_Gym = document.querySelector('#begin-button');
   const inter_Gym = document.querySelector('#inter-button');
+  const weight_Gain = document.querySelector('#weight-gain-button');
 
   begin_Gym.addEventListener('click', function () {
     window.location.href = 'begin_Gym.html';
@@ -11,7 +12,10 @@ document.addEventListener('DOMContentLoaded', function () {
   inter_Gym.addEventListener('click', function () {
     window.location.href = 'inter_Gym.html';
   });
-
+  weight_Gain.addEventListener('click', function () {
+    window.location.href = 'weight_Gain.html';
+  });
+  
   journeyButton.addEventListener('click', function () {
     if (window.innerWidth <= 768) {
       document.body.classList.add('show-overlay');
