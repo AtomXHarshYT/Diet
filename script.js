@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const begin_Gym = document.querySelector('#begin-button');
   const inter_Gym = document.querySelector('#inter-button');
   const weight_Gain = document.querySelector('#weight-gain-button');
+  const weight_Loss = document.querySelector('#weight-loss-button');
 
   begin_Gym.addEventListener('click', function () {
     window.location.href = 'begin_Gym.html';
@@ -14,6 +15,9 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   weight_Gain.addEventListener('click', function () {
     window.location.href = 'weight_Gain.html';
+  });
+  weight_Loss.addEventListener('click', function () {
+    window.location.href = 'weight_Loss.html';
   });
   
   journeyButton.addEventListener('click', function () {
