@@ -24,59 +24,72 @@ body {
   /* Ensures body covers the full viewport height */
 }
 
-/* Header Styling */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  /* Reduced padding */
   background: #282A36;
   color: #FFFFFF;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  height: 40px;
-  /* Increased height of header */
+  height: 50px; /* Adjusted height for better appearance */
 }
 
 /* Left Content */
 .left-content h1 {
   font-size: 22px;
-  /* Decreased font size */
   font-weight: bold;
   color: #FF6F61;
-  /* Highlighted word color */
   margin: 0;
   font-family: 'Oswald', sans-serif;
-  /* Changed font family */
+}
+
+/* Right Content */
+.right-content {
+  display: flex; /* Ensures user info and button are in a row */
+  align-items: center; /* Vertically centers the content */
+}
+
+/* User Info */
+.user-info {
+  color: rgb(255, 255, 255); /* Changed color to match the button */
+  margin-right: 15px; /* Space between user info and button */
+  display: flex; /* Use flexbox for better alignment */
+  flex-direction: column; /* Stack h2 and p vertically */
+  justify-content: center; /* Center vertically */
+  text-align: right; /* Align text to the right */
+}
+
+.user-info h2 {
+  font-size: 14px; /* Adjusted font size for better fit */
+  margin: 0; /* Remove default margin */
+}
+
+.user-info p {
+  font-size: 12px; /* Adjusted font size for better fit */
+  margin: 0; /* Remove default margin */
 }
 
 /* Right Content - Button */
 .contact-button {
   background-color: #FF6F61;
-  /* Vibrant button color */
   color: #FFFFFF;
   border: none;
-  padding: 10px 18px;
+  padding: 10px 18px; /* Adjusted padding for smaller height */
   font-size: 14px;
-  /* Decreased font size */
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  /* Enhanced transition */
 }
 
 .contact-button:hover {
   background-color: #E05A50;
-  /* Slightly darker color on hover */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  /* Shadow effect on hover */
 }
 
 .contact-button:active {
   background-color: #D04A40;
-  /* Darker color when pressed */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  /* Reduced shadow when pressed */
 }
 
 .contact-popup {
@@ -475,66 +488,86 @@ footer {
   /* Font size for readability */
 }
 
+/* Responsive Styles */
 @media (max-width: 768px) {
-  @media (max-width: 768px) {
+  header {
+      height: 40px; /* Reduced height for mobile */
+      padding: 5px 10px; /* Reduced padding for mobile */
+  }
 
-    .contact-popup {
+  .left-content h1 {
+      font-size: 18px; /* Adjusted font size for mobile */
+  }
+
+  .right-content {
+      flex-direction: row; /* Ensure row direction on mobile */
+  }
+
+  .user-info {
+      font-size: 12px; /* Adjusted font size for mobile */
+  }
+
+  .contact-button {
+      padding: 6px 12px; /* Adjusted padding for mobile */
+      font-size: 12px; /* Adjusted font size for mobile */
+  }
+
+  .contact-popup {
       padding: 15px;
-    }
+  }
 
-    .contact-popup h2 {
+  .contact-popup h2 {
       font-size: 1.3em;
-    }
+  }
 
-    .contact-popup p {
+  .contact-popup p {
       font-size: 0.9em;
-    }
+  }
 
-    .phone-number {
+  .phone-number {
       font-size: 1.1em;
-    }
+  }
 
-    .close-popup {
+  .close-popup {
       top: -20px;
       right: -10px;
       width: 25px;
       height: 25px;
       font-size: 20px;
-    }
+  }
 
-    .logo-container {
+  .logo-container {
       gap: 2px;
       padding: 5px;
       display: flex;
       flex-direction: column;
-    }
+  }
 
-    .logo {
+  .logo {
       max-width: 220px;
       height: auto;
-    }
+  }
 
-    .logo-2 {
+  .logo-2 {
       max-width: 200px;
       height: auto;
-    }
+  }
 
-    .box-content {
-      display: block;
-      /* Show box-content on mobile devices */
+  .box-content {
+      display: block; /* Show box-content on mobile devices */
       flex-direction: column;
       align-items: center;
       text-align: center;
-    }
+  }
 
-    .boxes-container {
+  .boxes-container {
       display: none;
       opacity: 0;
       transform: scale(0.9);
       transition: opacity 0.3s ease, transform 0.3s ease;
-    }
+  }
 
-    .boxes-container.show-boxes-mobile {
+  .boxes-container.show-boxes-mobile {
       display: flex;
       flex-direction: column;
       position: fixed;
@@ -550,14 +583,14 @@ footer {
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
       opacity: 1;
-    }
+  }
 
-    .boxes-container.show-boxes-mobile .box {
+  .boxes-container.show-boxes-mobile .box {
       margin-bottom: 15px;
-    }
+  }
 
-    /* Add an overlay when boxes are shown */
-    body::after {
+  /* Add an overlay when boxes are shown */
+  body::after {
       content: '';
       position: fixed;
       top: 0;
@@ -569,11 +602,10 @@ footer {
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.3s ease, visibility 0.3s ease;
-    }
+  }
 
-    body.show-overlay::after {
+  body.show-overlay::after {
       opacity: 1;
       visibility: visible;
-    }
   }
 }

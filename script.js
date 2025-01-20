@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Update the content on the page
   if (name && expiry) {
-    document.getElementById("welcomeMessage").textContent = `Hello, ${name}!`;
-    document.getElementById("expiryDetails").textContent = `Your account is valid until ${expiry}.`;
+    document.getElementById("welcomeMessage").textContent = `Welcome, ${name}!`;
+    document.getElementById("expiryDetails").textContent = `Subscription Expiry: ${expiry}.`;
   } else {
     // Fallback if details are missing
     document.getElementById("welcomeMessage").textContent = "Welcome to FitFlex!";
