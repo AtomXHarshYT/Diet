@@ -19,7 +19,30 @@ document.addEventListener('DOMContentLoaded', function () {
   weight_Loss.addEventListener('click', function () {
     window.location.href = 'weight_Loss.html';
   });
-  
+
+  // Function to get query parameters from the URL
+  function getQueryParams() {
+    const params = new URLSearchParams(window.location.search);
+    return {
+      name: params.get("name"),
+      expiry: params.get("expiry"),
+    };
+  }
+
+  // Retrieve user details from the URL
+  const { name, expiry } = getQueryParams();
+
+  // Update the content on the page
+  if (name && expiry) {
+    document.getElementById("welcomeMessage").textContent = `Hello, ${name}!`;
+    document.getElementById("expiryDetails").textContent = `Your account is valid until ${expiry}.`;
+  } else {
+    // Fallback if details are missing
+    document.getElementById("welcomeMessage").textContent = "Welcome to FitFlex!";
+    document.getElementById("expiryDetails").textContent = "Log in to view your account details.";
+  }
+
+
   journeyButton.addEventListener('click', function () {
     if (window.innerWidth <= 768) {
       document.body.classList.add('show-overlay');
