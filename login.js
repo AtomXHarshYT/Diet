@@ -31,13 +31,21 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
             }
 
             const storedPassword = user[1]?.trim();
+            const expiryDateStr = user[3]?.trim();
+            const expiryDate = new Date(expiryDateStr);
+            const currentDate = new Date();
+
             if (storedPassword === password) {
+                if (expiryDate < currentDate) {
+                    alert("Your account has expired. Please renew your membership.");
+                    return;
+                }
+
                 const name = user[2]?.trim();
-                const expiryDate = user[3]?.trim();
                 console.log("User Details:", { name, expiryDate }); // Debugging: Log user details
 
-                alert(`Welcome, ${name}! Your account is valid until ${expiryDate}.`);
-                window.location.href = `main.html?name=${name}&expiry=${expiryDate}`;
+                alert(`Welcome, ${name}! Your account is valid until ${expiryDateStr}.`);
+                window.location.href = `main.html?name=${name}&expiry=${expiryDateStr}`;
             } else {
                 alert("Incorrect password. Please try again.");
             }
@@ -46,5 +54,4 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
             console.error("Error fetching or parsing the CSV:", error);
             alert("An error occurred while processing your login. Please try again later.");
         });
-
 });
