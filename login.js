@@ -1,5 +1,5 @@
 // Replace this with your published Google Sheet CSV URL
-const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTve9ZbasB4diM4_nErmaP6E2hngZNaZqrKbhi1nEEPxidRXS9503UYhkMlcTkZxxwZqiaW-DHONFnv/pub?output=csv";
+const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTKVVoCHIZyZCAWA5QkhZvnQXJ4QI75ICB9m9jPaeYFTy8QEJO-Sr57q7Wx8_GwWA/pub?gid=1901224667&single=true&output=csv";
 
 // Attach event listener to the login form
 document.getElementById("loginForm").addEventListener("submit", function (event) {
@@ -22,16 +22,17 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
             const header = rows[0];
             const data = rows.slice(1);
 
+            // Find the user by username (Column A)
             const user = data.find(row => row[0].trim() === username);
             console.log("Matched User Row:", user); // Debugging: Log the matched user row
 
             if (!user) {
-                alert("User not found. Please check your username.");
+                alert("User  not found. Please check your username.");
                 return;
             }
 
-            const storedPassword = user[1]?.trim();
-            const expiryDateStr = user[3]?.trim();
+            const storedPassword = user[6]?.trim(); // Password is now in Column G (index 6)
+            const expiryDateStr = user[4]?.trim(); // Expiry date is now in Column E (index 4)
             const expiryDate = new Date(expiryDateStr);
             const currentDate = new Date();
 
@@ -41,8 +42,8 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
                     return;
                 }
 
-                const name = user[2]?.trim();
-                console.log("User Details:", { name, expiryDate }); // Debugging: Log user details
+                const name = user[1]?.trim(); // Name is now in Column B (index 1)
+                console.log("User  Details:", { name, expiryDate }); // Debugging: Log user details
 
                 alert(`Welcome, ${name}! Your account is valid until ${expiryDateStr}.`);
                 window.location.href = `main.html?name=${name}&expiry=${expiryDateStr}`;
