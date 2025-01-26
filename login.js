@@ -33,7 +33,16 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
 
             const storedPassword = user[6]?.trim(); // Password is now in Column G (index 6)
             const expiryDateStr = user[4]?.trim(); // Expiry date is now in Column E (index 4)
-            const expiryDate = new Date(expiryDateStr);
+
+            // Function to convert "dd-mm-yyyy" or "dd/mm/yyyy" to a valid Date object
+            function parseDate(dateStr) {
+                // Replace `/` with `-` if needed
+                const formattedDateStr = dateStr.replace(/\//g, '-'); // Converts dd/mm/yyyy to dd-mm-yyyy
+                const [day, month, year] = formattedDateStr.split('-').map(Number); // Extract day, month, year
+                return new Date(year, month - 1, day); // Create a Date object (month is zero-based)
+            }
+
+            const expiryDate = parseDate(expiryDateStr);
             const currentDate = new Date();
 
             if (storedPassword === password) {
@@ -41,18 +50,18 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
                     alert("Your account has expired. Please renew your membership.");
                     return;
                 }
+            
+            const name = user[1]?.trim(); // Name is now in Column B (index 1)
+            console.log("User  Details:", { name, expiryDate }); // Debugging: Log user details
 
-                const name = user[1]?.trim(); // Name is now in Column B (index 1)
-                console.log("User  Details:", { name, expiryDate }); // Debugging: Log user details
-
-                alert(`Welcome, ${name}! Your account is valid until ${expiryDateStr}.`);
-                window.location.href = `main.html?name=${name}&expiry=${expiryDateStr}`;
-            } else {
-                alert("Incorrect password. Please try again.");
-            }
+            alert(`Welcome, ${name}! Your account is valid until ${expiryDateStr}.`);
+            window.location.href = `main.html?name=${name}&expiry=${expiryDateStr}`;
+        } else {
+            alert("Incorrect password. Please try again.");
+        }
         })
-        .catch(error => {
-            console.error("Error fetching or parsing the CSV:", error);
-            alert("An error occurred while processing your login. Please try again later.");
-        });
+    .catch(error => {
+        console.error("Error fetching or parsing the CSV:", error);
+        alert("An error occurred while processing your login. Please try again later.");
+    });
 });
